@@ -1,0 +1,11 @@
+{
+  "title": "Settings",
+  "players": "Players",
+  "about": "About",
+  "aboutText": "Blood on the Clocktower player helper. Not affiliated with The Pandemonium Institute.",
+  "saveChanges": "Save Changes",
+  "resetGame": "Reset Game",
+  "resetConfirm": "Reset the game? All player data will be cleared.",
+  "saveHint": "Need at least 5 players with names.",
+  "close": "Close"
+}

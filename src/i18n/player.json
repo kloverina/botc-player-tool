@@ -1,0 +1,7 @@
+{
+  "placeholder": "Player {n}",
+  "addPlayer": "+ Add Player",
+  "removePlayer": "Remove player",
+  "minPlayersHint": "Need at least 5 players.",
+  "count": "{n} players"
+}

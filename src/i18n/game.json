@@ -1,0 +1,10 @@
+{
+  "newGame": "New Game",
+  "arrange": "Arrange",
+  "done": "Done",
+  "settings": "Settings",
+  "dragHint": "Drag players to reposition",
+  "emptyTitle": "No game in progress",
+  "emptySubtitle": "Start a new game to gather your players around the town square.",
+  "startNewGame": "Start New Game"
+}

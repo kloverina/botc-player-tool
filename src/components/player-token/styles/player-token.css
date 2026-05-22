@@ -1,0 +1,113 @@
+.token-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.token-circle {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    var(--color-parchment-light) 0%,
+    var(--color-parchment) 60%,
+    var(--color-parchment-dark) 100%
+  );
+  border: 2px solid var(--color-gold);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 220, 120, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.token-initials {
+  font-family: var(--font-display);
+  font-size: clamp(0.6rem, 2.5vw, 1rem);
+  color: var(--color-crimson-dark);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.token-role-img img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.token-shroud {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 1.4rem;
+  border-radius: 50%;
+}
+
+.token-name {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 2vw, 0.8rem);
+  color: var(--color-parchment-light);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  white-space: nowrap;
+  max-width: 120%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.is-dead .token-circle {
+  filter: grayscale(0.6);
+  border-color: var(--color-brown);
+}
+
+.is-dead .token-name {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.is-draggable {
+  cursor: grab;
+}
+
+.is-draggable:active {
+  cursor: grabbing;
+}
+
+.is-draggable .token-circle {
+  border-color: var(--color-gold);
+}
+
+.is-selected .token-circle {
+  border-color: #ffd700;
+  box-shadow:
+    0 0 0 3px rgba(255, 215, 0, 0.45),
+    0 2px 12px rgba(255, 215, 0, 0.35);
+}
+
+.token-selected-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px dashed #ffd700;
+  animation: spin 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

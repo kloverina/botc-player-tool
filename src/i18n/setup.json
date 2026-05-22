@@ -1,0 +1,9 @@
+{
+  "titleNew": "New Game",
+  "titleEdit": "Edit Players",
+  "subtitleNew": "Enter the names of all players.",
+  "subtitleEdit": "Manage your players.",
+  "startGame": "Start Game",
+  "saveChanges": "Save Changes",
+  "minPlayersHint": "Need at least 5 players to start."
+}

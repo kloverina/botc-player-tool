@@ -1,0 +1,22 @@
+:root {
+  --color-bg:            #120000;
+  --color-bg-mid:        #1e0000;
+  --color-bg-surface:    #2a0303;
+
+  --color-crimson:       #8b0000;
+  --color-crimson-dark:  #5a0000;
+  --color-crimson-light: #b30000;
+
+  --color-gold:          #c9a84c;
+  --color-gold-dark:     #8b6914;
+  --color-gold-muted:    #7a5c2a;
+  --color-parchment:     #e8d5b0;
+  --color-parchment-light: #f5ead0;
+  --color-parchment-dark:  #c8b080;
+
+  --color-brown:         #6b4423;
+  --color-brown-dark:    #2d1810;
+
+  --font-display: 'Cinzel', 'Georgia', serif;
+  --font-body:    'Crimson Text', 'Georgia', serif;
+}
