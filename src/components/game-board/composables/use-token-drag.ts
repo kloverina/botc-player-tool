@@ -15,6 +15,15 @@ function reorderByAngle(store: ReturnType<typeof useGameStore>) {
     return { id: p.id, x: pos.x, y: pos.y }
   })
 
+  // Freeze positions before reordering: players without a stored position
+  // use defaultCirclePos(idx, n) as fallback — once circleOrder changes their
+  // idx changes too, making them jump to wrong spots. Saving now prevents that.
+  for (const entry of withPos) {
+    if (!store.playerPositions[entry.id]) {
+      store.setPlayerPosition(entry.id, { x: entry.x, y: entry.y })
+    }
+  }
+
   const cx = withPos.reduce((s, p) => s + p.x, 0) / n
   const cy = withPos.reduce((s, p) => s + p.y, 0) / n
 

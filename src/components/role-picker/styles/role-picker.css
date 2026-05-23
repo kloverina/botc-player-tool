@@ -1,0 +1,78 @@
+.role-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.75rem;
+}
+
+.section-header {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  opacity: 0.8;
+}
+
+.type-townsfolk { color: var(--color-townsfolk); }
+.type-outsider  { color: var(--color-outsider); }
+.type-minion    { color: var(--color-minion); }
+.type-demon     { color: var(--color-demon); }
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.35rem;
+}
+
+.char-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.3rem 0.15rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.char-btn:active:not(.taken) {
+  transform: scale(0.94);
+}
+
+/* type accent borders */
+.char-btn.type-townsfolk { border-color: rgba(74, 127, 212, 0.4);  background: rgba(74, 127, 212, 0.07); }
+.char-btn.type-outsider  { border-color: rgba(74, 170, 138, 0.4);  background: rgba(74, 170, 138, 0.07); }
+.char-btn.type-minion    { border-color: rgba(201, 122, 58, 0.4);  background: rgba(201, 122, 58, 0.07); }
+.char-btn.type-demon     { border-color: rgba(201, 48, 48, 0.4);   background: rgba(201, 48, 48, 0.07); }
+
+/* taken by another player — dim but still clickable (duplicate assignment allowed) */
+.char-btn.taken {
+  opacity: 0.35;
+}
+
+.char-icon-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.char-icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.char-name {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  color: var(--color-parchment);
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

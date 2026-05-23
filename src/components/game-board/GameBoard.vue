@@ -50,6 +50,11 @@
         <span>{{ t.newGame }}</span>
       </button>
 
+      <button class="toolbar-btn" :class="{ active: showScriptEditor }" @click="toggleScriptEditor">
+        <IconScript />
+        <span>{{ t.script }}</span>
+      </button>
+
       <button class="toolbar-btn" :class="{ active: isDragMode }" @click="toggleDragMode">
         <IconCheck v-if="isDragMode" />
         <IconMove v-else />
@@ -63,8 +68,11 @@
     </div>
   </div>
 
-  <!-- Player card (status editor) -->
+  <!-- Player card (status + role editor) -->
   <PlayerCard :player="selectedPlayer" @close="selectedPlayerId = null" />
+
+  <!-- Script editor -->
+  <ScriptEditor :show="showScriptEditor" @close="showScriptEditor = false" />
 </template>
 
 <script setup lang="ts">
@@ -72,7 +80,8 @@ import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game.store'
 import PlayerToken from '@/components/player-token/PlayerToken.vue'
 import PlayerCard from '@/components/player-card/PlayerCard.vue'
-import { IconPlus, IconMove, IconCheck, IconMenu } from '@/components/icons'
+import ScriptEditor from '@/components/script-editor/ScriptEditor.vue'
+import { IconPlus, IconMove, IconCheck, IconMenu, IconScript } from '@/components/icons'
 import { useBoardLayout } from './composables/use-board-layout'
 import { useTokenDrag } from './composables/use-token-drag'
 import t from '@/i18n/game.json'
@@ -87,6 +96,7 @@ const orderedPlayers = computed(() => store.orderedPlayers)
 
 const boardRef = ref<HTMLElement | null>(null)
 const isDragMode = ref(false)
+const showScriptEditor = ref(false)
 const selectedPlayerId = ref<string | null>(null)
 
 const selectedPlayer = computed(() =>
@@ -100,6 +110,11 @@ const { draggingId, onPointerDown, onPointerMove, onPointerUp } = useTokenDrag(b
 
 function toggleDragMode() {
   isDragMode.value = !isDragMode.value
+  selectedPlayerId.value = null
+}
+
+function toggleScriptEditor() {
+  showScriptEditor.value = !showScriptEditor.value
   selectedPlayerId.value = null
 }
 

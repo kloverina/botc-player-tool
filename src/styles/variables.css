@@ -19,4 +19,10 @@
 
   --font-display: 'Cinzel', 'Georgia', serif;
   --font-body:    'Crimson Text', 'Georgia', serif;
+
+  /* Character type accent colors */
+  --color-townsfolk: #4a7fd4;
+  --color-outsider:  #4aaa8a;
+  --color-minion:    #c97a3a;
+  --color-demon:     #c93030;
 }

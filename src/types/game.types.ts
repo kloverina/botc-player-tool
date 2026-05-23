@@ -11,6 +11,7 @@ export interface GameState {
   isStarted: boolean
   version: number
   playerPositions?: Record<string, PlayerPosition>
+  script?: string[]
 }
 
 export const GAME_VERSION = 1

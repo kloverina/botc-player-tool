@@ -29,6 +29,7 @@ export const useGameStore = defineStore('game', () => {
   const circleOrder = ref<string[]>(saved?.circleOrder ?? [])
   const isStarted = ref<boolean>(saved?.isStarted ?? false)
   const playerPositions = ref<Record<string, PlayerPosition>>(saved?.playerPositions ?? {})
+  const script = ref<string[]>(saved?.script ?? [])
 
   const orderedPlayers = computed<Player[]>(() => {
     return circleOrder.value
@@ -37,7 +38,7 @@ export const useGameStore = defineStore('game', () => {
   })
 
   watch(
-    [players, circleOrder, isStarted, playerPositions],
+    [players, circleOrder, isStarted, playerPositions, script],
     () => {
       const state: GameState = {
         players: players.value,
@@ -45,6 +46,7 @@ export const useGameStore = defineStore('game', () => {
         isStarted: isStarted.value,
         version: GAME_VERSION,
         playerPositions: playerPositions.value,
+        script: script.value,
       }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
     },
@@ -126,11 +128,38 @@ export const useGameStore = defineStore('game', () => {
     playerPositions.value = {}
   }
 
+  function setScript(names: string[]) {
+    script.value = names
+  }
+
+  function toggleScriptCharacter(name: string) {
+    const idx = script.value.indexOf(name)
+    if (idx === -1) {
+      script.value = [...script.value, name]
+    } else {
+      script.value = script.value.filter(n => n !== name)
+    }
+  }
+
+  function resetScript() {
+    script.value = []
+    players.value = players.value.map(p => ({ ...p, role: undefined, roleImage: undefined }))
+  }
+
+  function assignRole(playerId: string, characterName: string, iconUrl: string) {
+    updatePlayer(playerId, { role: characterName, roleImage: iconUrl })
+  }
+
+  function clearRole(playerId: string) {
+    updatePlayer(playerId, { role: undefined, roleImage: undefined })
+  }
+
   return {
     players,
     circleOrder,
     isStarted,
     playerPositions,
+    script,
     orderedPlayers,
     startGame,
     updatePlayers,
@@ -141,5 +170,10 @@ export const useGameStore = defineStore('game', () => {
     removePlayer,
     setPlayerPosition,
     resetGame,
+    setScript,
+    toggleScriptCharacter,
+    resetScript,
+    assignRole,
+    clearRole,
   }
 })

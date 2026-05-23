@@ -23,53 +23,6 @@ Open [http://localhost:5173](http://localhost:5173) in your browser, or on your 
 npm run build
 ```
 
-Output goes to `dist/` — copy anywhere or serve as a static site.
-
-## Project structure
-
-```
-src/
-├── styles/
-│   ├── variables.css        # CSS custom properties (colors, fonts)
-│   └── global.css           # Resets + app layout
-├── types/
-│   ├── player.types.ts      # Player, PlayerStatus, PlayerAlignment
-│   ├── game.types.ts        # GameState, PlayerPosition, GAME_VERSION
-│   └── prop-def.types.ts    # PropDef helper type
-├── stores/
-│   └── game.store.ts        # Pinia store + localStorage persistence
-├── composables/
-│   └── use-resize-observer.ts
-├── i18n/
-│   ├── game.json            # Board / toolbar strings
-│   ├── player.json          # Player form strings
-│   ├── settings.json        # Settings panel strings
-│   └── setup.json           # Setup modal strings
-├── components/
-│   ├── icons/               # SVG icon Vue components
-│   ├── game-board/
-│   │   ├── composables/
-│   │   │   ├── use-board-layout.ts   # Token positions + sizing
-│   │   │   └── use-token-drag.ts     # Pointer drag + angle reorder
-│   │   ├── styles/game-board.css
-│   │   └── GameBoard.vue
-│   ├── player-token/
-│   │   ├── types/player-token.types.ts
-│   │   ├── styles/player-token.css
-│   │   └── PlayerToken.vue
-│   ├── player-card/
-│   │   └── PlayerCard.vue   # Status editor bottom sheet
-│   ├── setup-modal/
-│   │   └── SetupModal.vue   # New game / edit players
-│   └── settings-panel/
-│       └── SettingsPanel.vue
-└── App.vue
-
-public/
-└── icons/
-    └── characters/          # Character icons from the BotC wiki (~180 PNGs)
-```
-
 ## Features
 
 - Start a new game with any number of players (≥ 5)
@@ -77,13 +30,7 @@ public/
 - **Arrange mode**: drag tokens to rearrange; order is preserved by angle
 - **Player card**: tap any token to open a status editor
   - Mark players as **Alive**, **Killed** (night), or **Executed** (day vote)
-  - Visual status indicators on the token (grayscale + colored status bar)
+  - Visual status indicators on the token
 - **Settings panel**: rename, add, delete players; reset game
 - State persists via `localStorage`
-- Mobile-first, portrait and landscape supported
-- BotC-inspired dark crimson / gold / parchment color theme
-
-## Planned features
-
-- Character role / bluff assignment per player
-- Nomination & vote tracking
+- Portrait and landscape supported

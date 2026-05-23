@@ -1,0 +1,17 @@
+{
+  "title": "Script",
+  "townsfolk": "Townsfolk",
+  "outsiders": "Outsiders",
+  "minions": "Minions",
+  "demons": "Demons",
+  "done": "Done",
+  "resetScript": "Reset script",
+  "resetConfirm": "Clear the script and all assigned roles?",
+  "assignRole": "Assign role",
+  "changeRole": "Change",
+  "clearRole": "Remove",
+  "noScript": "No script — set one up first",
+  "pickRole": "Pick a role",
+  "search": "Search roles…",
+  "noResults": "No roles found"
+}
