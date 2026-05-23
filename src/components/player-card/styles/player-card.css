@@ -1,0 +1,114 @@
+.card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-bg-surface);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-bottom: none;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  padding: 1rem 1rem 1.5rem;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: rgba(232, 213, 176, 0.4);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.btn-close:hover {
+  color: var(--color-parchment);
+}
+
+.status-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: rgba(232, 213, 176, 0.45);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.status-btn:active {
+  transform: scale(0.97);
+}
+
+/* Alive */
+.status-btn.active-alive,
+.status-btn.status-alive.active {
+  background: rgba(60, 100, 60, 0.25);
+  border-color: rgba(100, 160, 100, 0.4);
+  color: #90c090;
+}
+
+/* Killed */
+.status-btn.active-dead,
+.status-btn.status-dead.active {
+  background: rgba(100, 0, 0, 0.3);
+  border-color: rgba(180, 0, 0, 0.4);
+  color: #c97070;
+}
+
+/* Executed */
+.status-btn.active-executed,
+.status-btn.status-executed.active {
+  background: rgba(50, 50, 50, 0.4);
+  border-color: rgba(120, 120, 120, 0.35);
+  color: #a0a0a0;
+}
+
+/* Card enter/leave */
+.card-enter-active,
+.card-leave-active {
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.2s;
+}
+
+.card-enter-from,
+.card-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}

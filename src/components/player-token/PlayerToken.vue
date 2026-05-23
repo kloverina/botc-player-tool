@@ -4,7 +4,8 @@
     :class="{
       'is-selected': isSelected,
       'is-draggable': isDragMode,
-      'is-dead': player.status === 'dead' || player.status === 'executed',
+      'is-dead': player.status === 'dead',
+      'is-executed': player.status === 'executed',
     }"
     :style="wrapperStyle"
   >
@@ -14,8 +15,10 @@
       </div>
       <div v-else class="token-initials">{{ initials }}</div>
 
-      <div v-if="player.status === 'dead' || player.status === 'executed'" class="token-shroud">💀</div>
+      <!-- Status bar: shown only for dead/executed -->
+      <div v-if="player.status === 'dead' || player.status === 'executed'" class="token-status-bar" />
 
+      <!-- Drag-mode selected ring -->
       <div v-if="isDragMode && isSelected" class="token-selected-ring" />
     </div>
     <span class="token-name">{{ player.name }}</span>

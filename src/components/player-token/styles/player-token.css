@@ -7,6 +7,7 @@
   transform: translate(-50%, -50%);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 
 .token-circle {
@@ -28,7 +29,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s, filter 0.2s, opacity 0.2s;
 }
 
 .token-initials {
@@ -45,20 +46,9 @@
   object-fit: contain;
 }
 
-.token-shroud {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  font-size: 1.4rem;
-  border-radius: 50%;
-}
-
 .token-name {
   font-family: var(--font-body);
-  font-size: clamp(0.6rem, 2vw, 0.8rem);
+  font-size: clamp(0.75rem, 2.8vw, 1rem);
   color: var(--color-parchment-light);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   text-align: center;
@@ -67,18 +57,55 @@
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.2;
+  transition: opacity 0.2s, color 0.2s;
 }
 
+/* Status bar at the bottom of the circle (inside, clipped by overflow:hidden) */
+.token-status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28%;
+  border-radius: 0 0 50% 50%;
+  pointer-events: none;
+}
+
+/* ── Dead (night kill) ── */
 .is-dead .token-circle {
-  filter: grayscale(0.6);
-  border-color: var(--color-brown);
+  filter: grayscale(0.85);
+  opacity: 0.8;
+  border-color: #4a3030;
+}
+
+.is-dead .token-status-bar {
+  background: rgba(120, 0, 0, 0.55);
 }
 
 .is-dead .token-name {
-  opacity: 0.5;
+  opacity: 0.45;
   text-decoration: line-through;
+  text-decoration-color: rgba(200, 100, 100, 0.5);
 }
 
+/* ── Executed (day vote) ── */
+.is-executed .token-circle {
+  filter: grayscale(1);
+  opacity: 0.6;
+  border-color: #333;
+}
+
+.is-executed .token-status-bar {
+  background: rgba(20, 20, 20, 0.65);
+}
+
+.is-executed .token-name {
+  opacity: 0.35;
+  text-decoration: line-through;
+  text-decoration-color: rgba(150, 150, 150, 0.4);
+}
+
+/* ── Drag mode ── */
 .is-draggable {
   cursor: grab;
 }

@@ -8,15 +8,16 @@
       @pointermove="onPointerMove"
       @pointerup="onPointerUp"
       @pointercancel="onPointerUp"
+      @click="onBoardClick"
     >
       <!-- Connecting lines -->
       <svg class="board-svg" :width="boardW" :height="boardH" aria-hidden="true">
         <polygon
-          v-if="orderedPlayers.length > 1"
+          v-if="orderedPlayers.length > 1 && isDragMode"
           :points="svgPoints"
           fill="none"
-          stroke="rgba(201,168,76,0.22)"
-          stroke-width="1.5"
+          stroke="rgba(201,168,76,0.35)"
+          stroke-width="2.5"
           stroke-linejoin="round"
         />
       </svg>
@@ -61,12 +62,16 @@
       </button>
     </div>
   </div>
+
+  <!-- Player card (status editor) -->
+  <PlayerCard :player="selectedPlayer" @close="selectedPlayerId = null" />
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game.store'
 import PlayerToken from '@/components/player-token/PlayerToken.vue'
+import PlayerCard from '@/components/player-card/PlayerCard.vue'
 import { IconPlus, IconMove, IconCheck, IconMenu } from '@/components/icons'
 import { useBoardLayout } from './composables/use-board-layout'
 import { useTokenDrag } from './composables/use-token-drag'
@@ -82,12 +87,28 @@ const orderedPlayers = computed(() => store.orderedPlayers)
 
 const boardRef = ref<HTMLElement | null>(null)
 const isDragMode = ref(false)
+const selectedPlayerId = ref<string | null>(null)
+
+const selectedPlayer = computed(() =>
+  selectedPlayerId.value
+    ? (orderedPlayers.value.find(p => p.id === selectedPlayerId.value) ?? null)
+    : null,
+)
 
 const { boardW, boardH, tokenPositions, tokenSize, svgPoints } = useBoardLayout(boardRef, orderedPlayers)
 const { draggingId, onPointerDown, onPointerMove, onPointerUp } = useTokenDrag(boardRef, isDragMode)
 
 function toggleDragMode() {
   isDragMode.value = !isDragMode.value
+  selectedPlayerId.value = null
+}
+
+function onBoardClick(e: MouseEvent) {
+  if (isDragMode.value) return
+  const el = (e.target as HTMLElement).closest('[data-player-id]') as HTMLElement | null
+  const id = el?.dataset.playerId
+  if (!id) return
+  selectedPlayerId.value = selectedPlayerId.value === id ? null : id
 }
 </script>
 
