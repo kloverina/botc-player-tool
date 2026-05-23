@@ -1,0 +1,205 @@
+export const CharacterType = {
+  Townsfolk: 'townsfolk',
+  Outsider:  'outsider',
+  Minion:    'minion',
+  Demon:     'demon',
+  Traveler:  'traveler',
+} as const
+
+export type CharacterType = (typeof CharacterType)[keyof typeof CharacterType]
+
+export interface Character {
+  name: string
+  type: CharacterType
+}
+
+/** Icon path derived from name: lowercase, strip non-alpha characters. */
+export function getCharacterIcon(name: string): string {
+  return `/icons/characters/Icon_${name.toLowerCase().replace(/[^a-z]/g, '')}.png`
+}
+
+export const characters: Character[] = [
+  // ── Townsfolk ────────────────────────────────────────────────────────────
+  { name: 'Acrobat',        type: 'townsfolk' },
+  { name: 'Alchemist',      type: 'townsfolk' },
+  { name: 'Alsaahir',       type: 'townsfolk' },
+  { name: 'Amnesiac',       type: 'townsfolk' },
+  { name: 'Artist',         type: 'townsfolk' },
+  { name: 'Atheist',        type: 'townsfolk' },
+  { name: 'Balloonist',     type: 'townsfolk' },
+  { name: 'Banshee',        type: 'townsfolk' },
+  { name: 'Bounty Hunter',  type: 'townsfolk' },
+  { name: 'Cannibal',       type: 'townsfolk' },
+  { name: 'Chambermaid',    type: 'townsfolk' },
+  { name: 'Chef',           type: 'townsfolk' },
+  { name: 'Choirboy',       type: 'townsfolk' },
+  { name: 'Clockmaker',     type: 'townsfolk' },
+  { name: 'Courtier',       type: 'townsfolk' },
+  { name: 'Cult Leader',    type: 'townsfolk' },
+  { name: 'Dreamer',        type: 'townsfolk' },
+  { name: 'Empath',         type: 'townsfolk' },
+  { name: 'Engineer',       type: 'townsfolk' },
+  { name: 'Exorcist',       type: 'townsfolk' },
+  { name: 'Farmer',         type: 'townsfolk' },
+  { name: 'Fisherman',      type: 'townsfolk' },
+  { name: 'Flowergirl',     type: 'townsfolk' },
+  { name: 'Fool',           type: 'townsfolk' },
+  { name: 'Fortune Teller', type: 'townsfolk' },
+  { name: 'Gambler',        type: 'townsfolk' },
+  { name: 'General',        type: 'townsfolk' },
+  { name: 'Gossip',         type: 'townsfolk' },
+  { name: 'Grandmother',    type: 'townsfolk' },
+  { name: 'High Priestess', type: 'townsfolk' },
+  { name: 'Huntsman',       type: 'townsfolk' },
+  { name: 'Innkeeper',      type: 'townsfolk' },
+  { name: 'Investigator',   type: 'townsfolk' },
+  { name: 'Juggler',        type: 'townsfolk' },
+  { name: 'King',           type: 'townsfolk' },
+  { name: 'Knight',         type: 'townsfolk' },
+  { name: 'Librarian',      type: 'townsfolk' },
+  { name: 'Lycanthrope',    type: 'townsfolk' },
+  { name: 'Magician',       type: 'townsfolk' },
+  { name: 'Mathematician',  type: 'townsfolk' },
+  { name: 'Mayor',          type: 'townsfolk' },
+  { name: 'Minstrel',       type: 'townsfolk' },
+  { name: 'Monk',           type: 'townsfolk' },
+  { name: 'Nightwatchman',  type: 'townsfolk' },
+  { name: 'Noble',          type: 'townsfolk' },
+  { name: 'Oracle',         type: 'townsfolk' },
+  { name: 'Pacifist',       type: 'townsfolk' },
+  { name: 'Philosopher',    type: 'townsfolk' },
+  { name: 'Pixie',          type: 'townsfolk' },
+  { name: 'Poppy Grower',   type: 'townsfolk' },
+  { name: 'Preacher',       type: 'townsfolk' },
+  { name: 'Princess',       type: 'townsfolk' },
+  { name: 'Professor',      type: 'townsfolk' },
+  { name: 'Ravenkeeper',    type: 'townsfolk' },
+  { name: 'Sage',           type: 'townsfolk' },
+  { name: 'Sailor',         type: 'townsfolk' },
+  { name: 'Savant',         type: 'townsfolk' },
+  { name: 'Seamstress',     type: 'townsfolk' },
+  { name: 'Shugenja',       type: 'townsfolk' },
+  { name: 'Slayer',         type: 'townsfolk' },
+  { name: 'Snake Charmer',  type: 'townsfolk' },
+  { name: 'Soldier',        type: 'townsfolk' },
+  { name: 'Steward',        type: 'townsfolk' },
+  { name: 'Tea Lady',       type: 'townsfolk' },
+  { name: 'Town Crier',     type: 'townsfolk' },
+  { name: 'Undertaker',     type: 'townsfolk' },
+  { name: 'Village Idiot',  type: 'townsfolk' },
+  { name: 'Virgin',         type: 'townsfolk' },
+  { name: 'Washerwoman',    type: 'townsfolk' },
+
+  // ── Outsiders ────────────────────────────────────────────────────────────
+  { name: 'Barber',         type: 'outsider' },
+  { name: 'Butler',         type: 'outsider' },
+  { name: 'Damsel',         type: 'outsider' },
+  { name: 'Drunk',          type: 'outsider' },
+  { name: 'Golem',          type: 'outsider' },
+  { name: 'Goon',           type: 'outsider' },
+  { name: 'Hatter',         type: 'outsider' },
+  { name: 'Heretic',        type: 'outsider' },
+  { name: 'Hermit',         type: 'outsider' },
+  { name: 'Klutz',          type: 'outsider' },
+  { name: 'Lunatic',        type: 'outsider' },
+  { name: 'Moonchild',      type: 'outsider' },
+  { name: 'Mutant',         type: 'outsider' },
+  { name: 'Ogre',           type: 'outsider' },
+  { name: 'Plague Doctor',  type: 'outsider' },
+  { name: 'Politician',     type: 'outsider' },
+  { name: 'Puzzlemaster',   type: 'outsider' },
+  { name: 'Qutler',         type: 'outsider' },
+  { name: 'Recluse',        type: 'outsider' },
+  { name: 'Saint',          type: 'outsider' },
+  { name: 'Snitch',         type: 'outsider' },
+  { name: 'Sweetheart',     type: 'outsider' },
+  { name: 'Tinker',         type: 'outsider' },
+  { name: 'Zealot',         type: 'outsider' },
+
+  // ── Minions ──────────────────────────────────────────────────────────────
+  { name: 'Assassin',       type: 'minion' },
+  { name: 'Baron',          type: 'minion' },
+  { name: 'Boffin',         type: 'minion' },
+  { name: 'Boomdandy',      type: 'minion' },
+  { name: 'Cerenovus',      type: 'minion' },
+  { name: "Devil's Advocate", type: 'minion' },
+  { name: 'Evil Twin',      type: 'minion' },
+  { name: 'Fearmonger',     type: 'minion' },
+  { name: 'Goblin',         type: 'minion' },
+  { name: 'Godfather',      type: 'minion' },
+  { name: 'Harpy',          type: 'minion' },
+  { name: 'Marionette',     type: 'minion' },
+  { name: 'Mastermind',     type: 'minion' },
+  { name: 'Mezepheles',     type: 'minion' },
+  { name: 'Organ Grinder',  type: 'minion' },
+  { name: 'Pit-Hag',        type: 'minion' },
+  { name: 'Poisoner',       type: 'minion' },
+  { name: 'Psychopath',     type: 'minion' },
+  { name: 'Scarlet Woman',  type: 'minion' },
+  { name: 'Spy',            type: 'minion' },
+  { name: 'Summoner',       type: 'minion' },
+  { name: 'Vizier',         type: 'minion' },
+  { name: 'Widow',          type: 'minion' },
+  { name: 'Witch',          type: 'minion' },
+  { name: 'Wizard',         type: 'minion' },
+  { name: 'Wraith',         type: 'minion' },
+  { name: 'Xaan',           type: 'minion' },
+
+  // ── Demons ───────────────────────────────────────────────────────────────
+  { name: 'Al-Hadikhia',    type: 'demon' },
+  { name: 'Fang Gu',        type: 'demon' },
+  { name: 'Imp',            type: 'demon' },
+  { name: 'Kazali',         type: 'demon' },
+  { name: 'Legion',         type: 'demon' },
+  { name: 'Leviathan',      type: 'demon' },
+  { name: "Lil' Monsta",    type: 'demon' },
+  { name: 'Lleech',         type: 'demon' },
+  { name: 'Lord of Typhon', type: 'demon' },
+  { name: 'No Dashii',      type: 'demon' },
+  { name: 'Ojo',            type: 'demon' },
+  { name: 'Po',             type: 'demon' },
+  { name: 'Pukka',          type: 'demon' },
+  { name: 'Riot',           type: 'demon' },
+  { name: 'Shabaloth',      type: 'demon' },
+  { name: 'Vigormortis',    type: 'demon' },
+  { name: 'Vortox',         type: 'demon' },
+  { name: 'Yaggababble',    type: 'demon' },
+  { name: 'Zombuul',        type: 'demon' },
+
+  // ── Travellers ───────────────────────────────────────────────────────────
+  { name: 'Apprentice',     type: 'traveler' },
+  { name: 'Barista',        type: 'traveler' },
+  { name: 'Beggar',         type: 'traveler' },
+  { name: 'Bishop',         type: 'traveler' },
+  { name: 'Bone Collector', type: 'traveler' },
+  { name: 'Bureaucrat',     type: 'traveler' },
+  { name: 'Butcher',        type: 'traveler' },
+  { name: 'Cacklejack',     type: 'traveler' },
+  { name: 'Deviant',        type: 'traveler' },
+  { name: 'Gangster',       type: 'traveler' },
+  { name: 'Gnome',          type: 'traveler' },
+  { name: 'Gunslinger',     type: 'traveler' },
+  { name: 'Harlot',         type: 'traveler' },
+  { name: 'Judge',          type: 'traveler' },
+  { name: 'Matron',         type: 'traveler' },
+  { name: 'Scapegoat',      type: 'traveler' },
+  { name: 'Thief',          type: 'traveler' },
+  { name: 'Voudon',         type: 'traveler' },
+]
+
+/** Lookup map: display name → Character */
+export const charactersByName = new Map(characters.map(c => [c.name, c]))
+
+/** Lookup map: script id → Character  (e.g. "plaguedoctor" → Plague Doctor) */
+export const charactersByScriptId = new Map(
+  characters.map(c => [c.name.toLowerCase().replace(/[^a-z]/g, ''), c]),
+)
+
+/** Characters grouped by type */
+export const charactersByType = characters.reduce(
+  (acc, c) => {
+    ;(acc[c.type] ??= []).push(c)
+    return acc
+  },
+  {} as Record<CharacterType, Character[]>,
+)
