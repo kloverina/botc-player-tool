@@ -13,9 +13,10 @@ export interface Character {
   type: CharacterType
 }
 
-/** Icon path derived from name: lowercase, strip non-alpha characters. */
+/** Icon path derived from name: lowercase, strip non-alpha characters.
+ *  Uses BASE_URL so paths resolve correctly both locally and on GitHub Pages. */
 export function getCharacterIcon(name: string): string {
-  return `/icons/characters/Icon_${name.toLowerCase().replace(/[^a-z]/g, '')}.png`
+  return `${import.meta.env.BASE_URL}icons/characters/Icon_${name.toLowerCase().replace(/[^a-z]/g, '')}.png`
 }
 
 export const characters: Character[] = [

@@ -3,6 +3,7 @@
     <Transition name="card">
       <div v-if="player" class="card-backdrop" @click.self="onClose">
         <div class="card">
+          <div class="drag-handle" @click="onClose" />
           <div class="card-header">
             <span class="card-name">{{ player.name }}</span>
             <button class="btn-close" @click="onClose">✕</button>

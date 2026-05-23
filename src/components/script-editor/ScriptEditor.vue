@@ -3,6 +3,7 @@
     <Transition name="card">
       <div v-if="show" class="editor-backdrop" @click.self="$emit('close')">
         <div class="editor">
+          <div class="drag-handle" @click="$emit('close')" />
 
           <div class="editor-header">
             <span class="editor-title">{{ t.title }}</span>
