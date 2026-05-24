@@ -11,9 +11,8 @@
   >
     <div class="token-circle">
       <div v-if="player.role" class="token-role-img">
-        <img :src="getCharacterIcon(player.role)" :alt="player.role" />
+        <img :src="getCharacterIcon(player.role)" :alt="player.role" draggable="false" />
       </div>
-      <div v-else class="token-initials">{{ initials }}</div>
 
       <!-- Shroud overlay: shown only for dead/executed -->
       <div v-if="player.status === 'dead' || player.status === 'executed'" class="token-shroud">

@@ -17,7 +17,8 @@
 .editor {
   width: 100%;
   max-width: 520px;
-  max-height: 88vh;
+  max-height: 85vh;
+  max-height: 85svh;
   background: var(--color-bg-surface);
   border: 1px solid rgba(201, 168, 76, 0.2);
   border-bottom: none;
@@ -178,7 +179,7 @@
 /* ── Character grid ── */
 .char-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.4rem;
   padding: 0.5rem 0 0;
 }
@@ -244,6 +245,30 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.editor-footer {
+  flex-shrink: 0;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.btn-done {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 10px;
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-done:hover {
+  background: rgba(201, 168, 76, 0.2);
 }
 
 .no-results {

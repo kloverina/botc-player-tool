@@ -17,7 +17,8 @@
 .card {
   width: 100%;
   max-width: 420px;
-  max-height: 82vh;
+  max-height: 80vh;
+  max-height: 80svh;
   background: var(--color-bg-surface);
   border: 1px solid rgba(201, 168, 76, 0.2);
   border-bottom: none;
