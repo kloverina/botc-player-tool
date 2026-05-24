@@ -143,15 +143,15 @@ export const useGameStore = defineStore('game', () => {
 
   function resetScript() {
     script.value = []
-    players.value = players.value.map(p => ({ ...p, role: undefined, roleImage: undefined }))
+    players.value = players.value.map(p => ({ ...p, role: undefined }))
   }
 
-  function assignRole(playerId: string, characterName: string, iconUrl: string) {
-    updatePlayer(playerId, { role: characterName, roleImage: iconUrl })
+  function assignRole(playerId: string, characterName: string) {
+    updatePlayer(playerId, { role: characterName })
   }
 
   function clearRole(playerId: string) {
-    updatePlayer(playerId, { role: undefined, roleImage: undefined })
+    updatePlayer(playerId, { role: undefined })
   }
 
   return {

@@ -43,7 +43,7 @@
             <div v-if="player.role" class="assigned-role">
               <img
                 class="assigned-role-icon"
-                :src="player.roleImage"
+                :src="getCharacterIcon(player.role)"
                 :alt="player.role"
               />
               <span class="assigned-role-name">{{ player.role }}</span>
@@ -86,6 +86,7 @@
 import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game.store'
 import type { Player, PlayerStatus } from '@/types/player.types'
+import { getCharacterIcon } from '@/data/characters'
 import { IconAlive, IconStatusKilled, IconStatusExecuted } from '@/components/icons'
 import RolePicker from '@/components/role-picker/RolePicker.vue'
 import t from '@/i18n/player.json'

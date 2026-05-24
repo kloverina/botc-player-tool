@@ -10,8 +10,8 @@
     :style="wrapperStyle"
   >
     <div class="token-circle">
-      <div v-if="player.roleImage" class="token-role-img">
-        <img :src="player.roleImage" :alt="player.role" />
+      <div v-if="player.role" class="token-role-img">
+        <img :src="getCharacterIcon(player.role)" :alt="player.role" />
       </div>
       <div v-else class="token-initials">{{ initials }}</div>
 
@@ -28,6 +28,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { PlayerTokenProps } from './types/player-token.types'
+import { getCharacterIcon } from '@/data/characters'
 
 const props = withDefaults(defineProps<PlayerTokenProps>(), {
   isDragMode: false,

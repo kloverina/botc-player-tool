@@ -6,7 +6,6 @@ export interface Player {
   id: string
   name: string
   role?: string
-  roleImage?: string
   status?: PlayerStatus
   alignment?: PlayerAlignment
   notes?: string

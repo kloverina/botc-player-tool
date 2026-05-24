@@ -59,7 +59,7 @@ const takenRoles = computed(() =>
 const isTaken = (name: string) => takenRoles.value.has(name)
 
 function select(char: Character) {
-  store.assignRole(props.playerId, char.name, getCharacterIcon(char.name))
+  store.assignRole(props.playerId, char.name)
   emit('select', char)
 }
 </script>
