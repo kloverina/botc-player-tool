@@ -15,8 +15,10 @@
       </div>
       <div v-else class="token-initials">{{ initials }}</div>
 
-      <!-- Status bar: shown only for dead/executed -->
-      <div v-if="player.status === 'dead' || player.status === 'executed'" class="token-status-bar" />
+      <!-- Shroud overlay: shown only for dead/executed -->
+      <div v-if="player.status === 'dead' || player.status === 'executed'" class="token-shroud">
+        <IconShroud :type="player.status" />
+      </div>
 
       <!-- Drag-mode selected ring -->
       <div v-if="isDragMode && isSelected" class="token-selected-ring" />
@@ -29,6 +31,7 @@
 import { computed } from 'vue'
 import type { PlayerTokenProps } from './types/player-token.types'
 import { getCharacterIcon } from '@/data/characters'
+import { IconShroud } from '@/components/icons'
 
 const props = withDefaults(defineProps<PlayerTokenProps>(), {
   isDragMode: false,

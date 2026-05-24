@@ -6,5 +6,6 @@
   "count": "{n} players",
   "statusAlive": "Alive",
   "statusKilled": "Killed",
-  "statusExecuted": "Executed"
+  "statusExecuted": "Executed",
+  "notesPlaceholder": "Notes…"
 }

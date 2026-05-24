@@ -76,6 +76,18 @@
               @select="onRoleSelected"
             />
           </div>
+
+          <!-- Notes -->
+          <div class="notes-section">
+            <textarea
+              ref="notesEl"
+              class="notes-input"
+              :placeholder="t.notesPlaceholder"
+              :value="notes"
+              rows="2"
+              @input="onNotesInput"
+            />
+          </div>
         </div>
       </div>
     </Transition>
@@ -83,7 +95,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 import { useGameStore } from '@/stores/game.store'
 import type { Player, PlayerStatus } from '@/types/player.types'
 import { getCharacterIcon } from '@/data/characters'
@@ -97,6 +109,19 @@ const emit = defineEmits<{ close: [] }>()
 
 const store = useGameStore()
 const showPicker = ref(false)
+const notesEl = ref<HTMLTextAreaElement | null>(null)
+const notes = computed(() => props.player?.notes ?? '')
+
+function autoResize() {
+  const el = notesEl.value
+  if (!el) return
+  el.style.height = 'auto'
+  el.style.height = `${el.scrollHeight}px`
+}
+
+watch(() => props.player?.id, () => {
+  nextTick(autoResize)
+})
 
 const currentStatus = computed(() => props.player?.status ?? 'alive')
 const hasScript = computed(() => store.script.length > 0)
@@ -115,6 +140,12 @@ function onClearRole() {
   if (!props.player) return
   store.clearRole(props.player.id)
   showPicker.value = false
+}
+
+function onNotesInput(e: Event) {
+  if (!props.player) return
+  store.updatePlayer(props.player.id, { notes: (e.target as HTMLTextAreaElement).value })
+  autoResize()
 }
 
 function onClose() {

@@ -219,6 +219,40 @@
   font-style: italic;
 }
 
+/* ── Notes ── */
+.notes-section {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.08);
+}
+
+.notes-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-parchment);
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  line-height: 1.5;
+  min-height: 60px;
+  transition: border-color 0.15s;
+}
+
+.notes-input::placeholder {
+  color: rgba(232, 213, 176, 0.25);
+}
+
+.notes-input:focus {
+  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+}
+
 /* Card enter/leave */
 .card-enter-active,
 .card-leave-active {

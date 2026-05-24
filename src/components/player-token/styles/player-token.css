@@ -69,49 +69,45 @@
   transition: opacity 0.2s, color 0.2s;
 }
 
-/* Status bar at the bottom of the circle (inside, clipped by overflow:hidden) */
-.token-status-bar {
+/* ── Shroud overlay (inside circle, clipped by overflow:hidden) ── */
+.token-shroud {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 28%;
-  border-radius: 0 0 50% 50%;
+  inset: 0;
   pointer-events: none;
 }
 
 /* ── Dead (night kill) ── */
 .is-dead .token-circle {
-  filter: grayscale(0.85);
-  opacity: 0.8;
-  border-color: #4a3030;
+  filter: grayscale(0.75);
+  opacity: 0.85;
+  border-color: #3a3a3a;
 }
 
-.is-dead .token-status-bar {
-  background: rgba(120, 0, 0, 0.55);
+.is-dead .token-shroud {
+  color: rgba(22, 18, 28, 0.82);
 }
 
 .is-dead .token-name {
   opacity: 0.45;
   text-decoration: line-through;
-  text-decoration-color: rgba(200, 100, 100, 0.5);
+  text-decoration-color: rgba(180, 180, 180, 0.5);
 }
 
 /* ── Executed (day vote) ── */
 .is-executed .token-circle {
-  filter: grayscale(1);
-  opacity: 0.6;
-  border-color: #333;
+  filter: grayscale(0.75);
+  opacity: 0.85;
+  border-color: #3a3a3a;
 }
 
-.is-executed .token-status-bar {
-  background: rgba(20, 20, 20, 0.65);
+.is-executed .token-shroud {
+  color: rgba(22, 18, 28, 0.82);
 }
 
 .is-executed .token-name {
-  opacity: 0.35;
+  opacity: 0.45;
   text-decoration: line-through;
-  text-decoration-color: rgba(150, 150, 150, 0.4);
+  text-decoration-color: rgba(180, 180, 180, 0.5);
 }
 
 /* ── Drag mode ── */
