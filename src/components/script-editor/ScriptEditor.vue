@@ -52,10 +52,6 @@
             </div>
           </div>
 
-          <div class="editor-footer">
-            <button class="btn-done" @click="$emit('close')">{{ t.done }}</button>
-          </div>
-
         </div>
       </div>
     </Transition>

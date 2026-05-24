@@ -19,13 +19,13 @@
   max-width: 420px;
   max-height: 80vh;
   max-height: 80svh;
-  background: var(--color-bg-surface);
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: var(--color-parchment);
+  border: 1px solid rgba(201, 168, 76, 0.4);
   border-bottom: none;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   padding: 1rem 1rem 0;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -35,7 +35,7 @@
   flex-shrink: 0;
   width: 36px;
   height: 4px;
-  background: rgba(201, 168, 76, 0.3);
+  background: rgba(122, 92, 42, 0.35);
   border-radius: 2px;
   margin: 10px auto 4px;
   cursor: pointer;
@@ -52,23 +52,28 @@
 .card-name {
   font-family: var(--font-display);
   font-size: 1.1rem;
-  color: var(--color-gold);
+  color: var(--color-crimson-dark);
   letter-spacing: 0.05em;
 }
 
 .btn-close {
   background: none;
   border: none;
-  color: rgba(232, 213, 176, 0.4);
+  color: rgba(107, 68, 35, 0.45);
   font-size: 0.85rem;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
   transition: color 0.15s;
 }
 
 .btn-close:hover {
-  color: var(--color-parchment);
+  color: var(--color-crimson);
 }
 
 .status-row {
@@ -84,10 +89,10 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.65rem 0.25rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(122, 92, 42, 0.2);
   border-radius: 10px;
-  color: rgba(232, 213, 176, 0.45);
+  color: rgba(107, 68, 35, 0.55);
   font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.03em;
@@ -103,25 +108,25 @@
 /* Alive */
 .status-btn.active-alive,
 .status-btn.status-alive.active {
-  background: rgba(60, 100, 60, 0.25);
-  border-color: rgba(100, 160, 100, 0.4);
-  color: #90c090;
+  background: rgba(34, 80, 34, 0.1);
+  border-color: rgba(34, 80, 34, 0.5);
+  color: #2a5e2a;
 }
 
 /* Killed */
 .status-btn.active-dead,
 .status-btn.status-dead.active {
-  background: rgba(100, 0, 0, 0.3);
-  border-color: rgba(180, 0, 0, 0.4);
-  color: #c97070;
+  background: rgba(120, 0, 0, 0.08);
+  border-color: rgba(139, 0, 0, 0.55);
+  color: var(--color-crimson);
 }
 
 /* Executed */
 .status-btn.active-executed,
 .status-btn.status-executed.active {
-  background: rgba(50, 50, 50, 0.4);
-  border-color: rgba(120, 120, 120, 0.35);
-  color: #a0a0a0;
+  background: rgba(60, 50, 40, 0.1);
+  border-color: rgba(60, 50, 40, 0.45);
+  color: #3d3028;
 }
 
 /* ── Role section ── */
@@ -131,7 +136,7 @@
   overflow-y: auto;
   margin-top: 0.75rem;
   padding: 0.75rem 0 1.5rem;
-  border-top: 1px solid rgba(201, 168, 76, 0.1);
+  border-top: 1px solid rgba(122, 92, 42, 0.18);
 }
 
 .assigned-role {
@@ -151,7 +156,7 @@
   flex: 1;
   font-family: var(--font-display);
   font-size: 0.9rem;
-  color: var(--color-parchment);
+  color: var(--color-brown-dark);
   letter-spacing: 0.03em;
 }
 
@@ -162,29 +167,30 @@
 
 .role-action-btn {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(122, 92, 42, 0.3);
   border-radius: 6px;
-  color: rgba(232, 213, 176, 0.5);
+  color: var(--color-brown);
   font-family: var(--font-body);
   font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem 0.6rem;
+  min-height: 32px;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
 }
 
 .role-action-btn:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  color: var(--color-parchment);
+  border-color: rgba(122, 92, 42, 0.55);
+  color: var(--color-brown-dark);
 }
 
 .role-action-btn.danger {
-  border-color: rgba(180, 60, 60, 0.3);
-  color: rgba(200, 100, 100, 0.6);
+  border-color: rgba(139, 0, 0, 0.25);
+  color: rgba(139, 0, 0, 0.5);
 }
 
 .role-action-btn.danger:hover {
-  border-color: rgba(200, 80, 80, 0.5);
-  color: #c97070;
+  border-color: rgba(139, 0, 0, 0.5);
+  color: var(--color-crimson);
 }
 
 .no-role,
@@ -195,9 +201,9 @@
 
 .assign-btn {
   background: none;
-  border: 1px solid rgba(201, 168, 76, 0.25);
+  border: 1px solid rgba(122, 92, 42, 0.3);
   border-radius: 8px;
-  color: rgba(201, 168, 76, 0.65);
+  color: rgba(107, 68, 35, 0.65);
   font-family: var(--font-body);
   font-size: 0.82rem;
   letter-spacing: 0.03em;
@@ -209,34 +215,34 @@
 }
 
 .assign-btn:hover {
-  border-color: rgba(201, 168, 76, 0.5);
-  color: var(--color-gold);
+  border-color: rgba(122, 92, 42, 0.55);
+  color: var(--color-brown-dark);
 }
 
 .no-script-hint {
   font-family: var(--font-body);
   font-size: 0.78rem;
-  color: rgba(232, 213, 176, 0.25);
+  color: rgba(107, 68, 35, 0.4);
   font-style: italic;
 }
 
 /* ── Notes ── */
 .notes-section {
   padding: 0 1rem 1rem;
-  border-top: 1px solid rgba(201, 168, 76, 0.08);
+  border-top: 1px solid rgba(122, 92, 42, 0.12);
 }
 
 .notes-input {
   width: 100%;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(201, 168, 76, 0.15);
+  background: var(--color-parchment-light);
+  border: 1px solid rgba(122, 92, 42, 0.25);
   border-radius: 8px;
   padding: 0.6rem 0.75rem;
   margin-top: 0.75rem;
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: var(--color-parchment);
+  color: var(--color-brown-dark);
   resize: none;
   overflow: hidden;
   outline: none;
@@ -246,12 +252,12 @@
 }
 
 .notes-input::placeholder {
-  color: rgba(232, 213, 176, 0.25);
+  color: rgba(107, 68, 35, 0.35);
 }
 
 .notes-input:focus {
-  border-color: rgba(201, 168, 76, 0.35);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(122, 92, 42, 0.5);
+  background: #fff;
 }
 
 /* Card enter/leave */

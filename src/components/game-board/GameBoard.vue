@@ -1,5 +1,17 @@
 <template>
   <div class="board-container">
+    <!-- Setup counts bar -->
+    <div v-if="setupCounts" class="setup-bar">
+      <span class="setup-count type-townsfolk">{{ setupCounts.t }}<em>T</em></span>
+      <span class="setup-sep">·</span>
+      <span class="setup-count type-outsider">{{ setupCounts.o }}<em>O</em></span>
+      <span class="setup-sep">·</span>
+      <span class="setup-count type-minion">{{ setupCounts.m }}<em>M</em></span>
+      <span class="setup-sep">·</span>
+      <span class="setup-count type-demon">{{ setupCounts.d }}<em>D</em></span>
+    
+    </div>
+
     <!-- Free-form board area -->
     <div
       class="board"
@@ -45,7 +57,7 @@
 
     <!-- Bottom toolbar -->
     <div class="board-toolbar">
-      <button class="toolbar-btn" @click="$emit('open-setup')">
+      <button class="toolbar-btn" @click="openSetup">
         <IconPlus />
         <span>{{ t.newGame }}</span>
       </button>
@@ -61,7 +73,7 @@
         <span>{{ isDragMode ? t.done : t.arrange }}</span>
       </button>
 
-      <button class="toolbar-btn" @click="$emit('open-settings')">
+      <button class="toolbar-btn" @click="openSettings">
         <IconMenu />
         <span>{{ t.settings }}</span>
       </button>
@@ -85,6 +97,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useGameStore } from '@/stores/game.store'
+import { getSetupCounts } from '@/data/setup'
 import PlayerToken from '@/components/player-token/PlayerToken.vue'
 import PlayerCard from '@/components/player-card/PlayerCard.vue'
 import ScriptEditor from '@/components/script-editor/ScriptEditor.vue'
@@ -94,7 +107,7 @@ import { useBoardLayout } from './composables/use-board-layout'
 import { useTokenDrag } from './composables/use-token-drag'
 import t from '@/i18n/game.json'
 
-defineEmits<{
+const emit = defineEmits<{
   'open-setup': []
   'open-settings': []
 }>()
@@ -114,12 +127,26 @@ const selectedPlayer = computed(() =>
     : null,
 )
 
+const setupCounts = computed(() => getSetupCounts(store.players.length))
+
 const { boardW, boardH, tokenPositions, tokenSize, svgPoints } = useBoardLayout(boardRef, orderedPlayers)
 const { draggingId, onPointerDown, onPointerMove, onPointerUp } = useTokenDrag(boardRef, isDragMode)
 
 function toggleDragMode() {
   isDragMode.value = !isDragMode.value
   selectedPlayerId.value = null
+}
+
+function openSetup() {
+  isDragMode.value = false
+  selectedPlayerId.value = null
+  emit('open-setup')
+}
+
+function openSettings() {
+  isDragMode.value = false
+  selectedPlayerId.value = null
+  emit('open-settings')
 }
 
 function toggleScriptEditor() {
