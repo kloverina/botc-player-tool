@@ -10,21 +10,6 @@ A mobile-first companion app for **Blood on the Clocktower** — track players, 
 
 ---
 
-## Setup
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser, or on your phone via your local IP.
-
-## Build for production
-
-```bash
-npm run build
-```
-
 ## Features
 
 - Start a new game with any number of players (≥ 5)
@@ -36,3 +21,18 @@ npm run build
 - **Settings panel**: rename, add, delete players; reset game
 - State persists via `localStorage`
 - Portrait and landscape supported
+
+---
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser, or on your phone via your local IP.
+
+```bash
+npm run build   # production build
+```
