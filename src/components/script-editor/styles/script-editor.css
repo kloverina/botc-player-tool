@@ -65,7 +65,7 @@
   border-radius: 6px;
   color: rgba(139, 0, 0, 0.55);
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
@@ -243,7 +243,7 @@
 
 .char-name {
   font-family: var(--font-body);
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   color: var(--color-brown);
   text-align: center;
   line-height: 1.2;
