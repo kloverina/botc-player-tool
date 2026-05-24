@@ -21,6 +21,7 @@
       v-if="showSetup"
       :existing-players="store.players"
       :is-editing="store.isStarted"
+      :has-script="store.script.length > 0"
       @confirm="handleSetupConfirm"
       @close="showSetup = false"
     />
@@ -45,7 +46,8 @@ function openSetup() {
   showSetup.value = true
 }
 
-function handleSetupConfirm(names: string[]) {
+function handleSetupConfirm(names: string[], clearScript: boolean) {
+  if (clearScript) store.resetScript()
   store.startGame(names)
   showSetup.value = false
 }

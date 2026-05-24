@@ -1,5 +1,9 @@
 {
   "title": "Script",
+  "pickerTitle": "Choose a Script",
+  "or": "or",
+  "loadJson": "Load from JSON",
+  "customScript": "Custom script",
   "townsfolk": "Townsfolk",
   "outsiders": "Outsiders",
   "minions": "Minions",

@@ -37,6 +37,11 @@
 
         <button class="btn-add" @click="addName">+ Add Player</button>
 
+        <label v-if="hasScript" class="clear-script-row">
+          <input v-model="clearScript" type="checkbox" class="clear-script-checkbox" />
+          <span>{{ t.clearScript }}</span>
+        </label>
+
         <div class="modal-actions">
           <button class="btn-primary" :disabled="!canConfirm" @click="confirm">
             {{ isEditing ? t.saveChanges : t.startGame }}
@@ -64,15 +69,17 @@ interface NameEntry {
 interface Props {
   existingPlayers?: Player[]
   isEditing?: boolean
+  hasScript?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   existingPlayers: () => [],
   isEditing: false,
+  hasScript: false,
 })
 
 const emit = defineEmits<{
-  confirm: [names: string[]]
+  confirm: [names: string[], clearScript: boolean]
   close: []
 }>()
 
@@ -88,6 +95,7 @@ const nameList = ref<NameEntry[]>(
 )
 
 const inputRefs = ref<HTMLInputElement[]>([])
+const clearScript = ref(false)
 
 const canConfirm = computed(() =>
   nameList.value.filter(e => e.name.trim().length > 0).length >= 5,
@@ -116,7 +124,7 @@ function focusNext(idx: number) {
 
 function confirm() {
   const names = nameList.value.map(e => e.name.trim()).filter(n => n.length > 0)
-  emit('confirm', names)
+  emit('confirm', names, clearScript.value)
 }
 
 onMounted(() => {

@@ -71,6 +71,13 @@
   <!-- Player card (status + role editor) -->
   <PlayerCard :player="selectedPlayer" @close="selectedPlayerId = null" />
 
+  <!-- Script picker (shown when no script is set) -->
+  <ScriptPicker
+    :show="showScriptPicker"
+    @close="showScriptPicker = false"
+    @custom="onCustomScript"
+  />
+
   <!-- Script editor -->
   <ScriptEditor :show="showScriptEditor" @close="showScriptEditor = false" />
 </template>
@@ -81,6 +88,7 @@ import { useGameStore } from '@/stores/game.store'
 import PlayerToken from '@/components/player-token/PlayerToken.vue'
 import PlayerCard from '@/components/player-card/PlayerCard.vue'
 import ScriptEditor from '@/components/script-editor/ScriptEditor.vue'
+import ScriptPicker from '@/components/script-picker/ScriptPicker.vue'
 import { IconPlus, IconMove, IconCheck, IconMenu, IconScript } from '@/components/icons'
 import { useBoardLayout } from './composables/use-board-layout'
 import { useTokenDrag } from './composables/use-token-drag'
@@ -97,6 +105,7 @@ const orderedPlayers = computed(() => store.orderedPlayers)
 const boardRef = ref<HTMLElement | null>(null)
 const isDragMode = ref(false)
 const showScriptEditor = ref(false)
+const showScriptPicker = ref(false)
 const selectedPlayerId = ref<string | null>(null)
 
 const selectedPlayer = computed(() =>
@@ -114,8 +123,19 @@ function toggleDragMode() {
 }
 
 function toggleScriptEditor() {
-  showScriptEditor.value = !showScriptEditor.value
+  if (store.script.length === 0) {
+    showScriptPicker.value = !showScriptPicker.value
+    showScriptEditor.value = false
+  } else {
+    showScriptEditor.value = !showScriptEditor.value
+    showScriptPicker.value = false
+  }
   selectedPlayerId.value = null
+}
+
+function onCustomScript() {
+  showScriptPicker.value = false
+  showScriptEditor.value = true
 }
 
 function onBoardClick(e: MouseEvent) {
