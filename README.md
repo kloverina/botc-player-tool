@@ -1,5 +1,7 @@
 # BotC Player Tool
 
+**[▶ Open the app](https://kloverina.github.io/botc-player-tool/)**
+
 A mobile-first companion app for **Blood on the Clocktower** — track players, arrange the town square, and mark eliminations during your game.
 
 > **Fan project disclaimer:** This is an unofficial fan-made tool and is not affiliated with, endorsed by, or connected to The Pandemonium Institute or the official Blood on the Clocktower game in any way. All character names, artwork, and game concepts belong to their respective owners.
